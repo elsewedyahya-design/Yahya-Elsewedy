@@ -1,0 +1,30 @@
+# Word lock/temp files
+~$*
+
+# Session temp artifacts (leading-dot-underscore scratch files)
+._*
+
+# Rendered / intermediate outputs
+*.pdf
+FO_pp.*
+VERIFY_*
+*.pixelperfect.docx
+*.hardened.docx
+*.final.docx
+roundtrip_test.docx
+test_filled.docx
+
+# Unpacked working dirs (regenerable via scripts/office/unpack.py)
+unpacked/
+unpacked_final/
+unpacked_fulloffer/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+Thumbs.db
+desktop.ini
