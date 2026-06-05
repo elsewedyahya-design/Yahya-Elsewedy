@@ -28,3 +28,6 @@ venv/
 # OS
 Thumbs.db
 desktop.ini
+
+# Authoritative template working dir (regenerable)
+unpacked_authoritative/

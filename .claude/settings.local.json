@@ -71,7 +71,19 @@
       "Bash(powershell.exe -NoProfile -Command 'Get-Process winget -ErrorAction SilentlyContinue | Select-Object Id | Format-Table -Auto | Out-String | ForEach-Object { if\\($_ -match '\\\\''\\\\d'\\\\''\\){'\\\\''winget RUNNING'\\\\''}else{'\\\\''winget DONE'\\\\''} }')",
       "Bash(powershell.exe -NoProfile -Command \"if\\(Get-Process winget -EA SilentlyContinue\\){'RUNNING'}else{'DONE'}\")",
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -q -m ' *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(python -m pip install python-docx lxml openpyxl --quiet)",
+      "Bash(python -c \"import docx, lxml, openpyxl; print\\('docx', docx.__version__, '| lxml ok | openpyxl', openpyxl.__version__\\)\")",
+      "Bash(git credential *)",
+      "Skill(schedule)",
+      "Skill(schedule:*)",
+      "Bash(python -c \"import docx, lxml, openpyxl; print\\('OK: docx', docx.__version__, '| lxml | openpyxl', openpyxl.__version__\\)\")",
+      "Bash(python scripts/office/unpack.py FULL_OFFER_final.docx unpacked_authoritative/)",
+      "Bash(python scripts/office/pack.py unpacked_authoritative/ ._rt_check.docx --original FULL_OFFER_final.docx)"
     ]
   }
 }
