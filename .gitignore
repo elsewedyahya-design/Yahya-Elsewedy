@@ -31,3 +31,6 @@ desktop.ini
 
 # Authoritative template working dir (regenerable)
 unpacked_authoritative/
+
+# master template working dir (regenerable)
+unpacked_master/

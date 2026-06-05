@@ -86,7 +86,12 @@
       "Bash(python scripts/office/pack.py unpacked_authoritative/ ._rt_check.docx --original FULL_OFFER_final.docx)",
       "Bash(python scripts/seed_library.py)",
       "Bash(python -m pip install pytest --quiet)",
-      "Bash(python -m pytest tests/ -q)"
+      "Bash(python -m pytest tests/ -q)",
+      "Bash(python scripts/office/unpack.py MASTER_TEMPLATE.docx unpacked_master/)",
+      "Bash(rm -f VERIFY_p1.pdf)",
+      "Bash(powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/office/render_page1.ps1 -Path \"VERIFY_projectname.docx\" -Pdf \"VERIFY_p1.pdf\")",
+      "Bash(powershell.exe -NoProfile -Command 'Get-Process WINWORD -ErrorAction SilentlyContinue | Select Id,@{n='\\\\''Title'\\\\'';e={$_.MainWindowTitle}} | Format-Table -Auto | Out-String')",
+      "Bash(powershell.exe -NoProfile -Command 'Get-Process WINWORD -ErrorAction SilentlyContinue | Where-Object { -not $_.MainWindowTitle } | ForEach-Object { Stop-Process -Id $_.Id -Force; '\\\\''killed headless WINWORD '\\\\''+$_.Id }')"
     ]
   }
 }
