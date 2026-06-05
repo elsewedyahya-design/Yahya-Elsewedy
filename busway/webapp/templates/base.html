@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Busway Offer Generator{% endblock %}</title>
+  <style>
+    :root{
+      --red:#C8102E; --dark:#1A1A1A; --navy:#1F3864; --grey:#6B7280;
+      --zebra:#F4F6F8; --line:#D0D5DB;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Montserrat','Segoe UI',system-ui,sans-serif;color:var(--dark);
+      margin:0;background:#fff;line-height:1.5}
+    header{border-bottom:3px solid var(--red);padding:18px 32px;display:flex;
+      align-items:center;justify-content:space-between}
+    header .brand{font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+    header .brand span{color:var(--red)}
+    header nav a{color:var(--dark);text-decoration:none;font-weight:600;
+      margin-left:20px;font-size:14px}
+    header nav a:hover{color:var(--red)}
+    main{max-width:980px;margin:0 auto;padding:28px 32px 80px}
+    h1{font-size:24px;text-transform:uppercase;border-bottom:2px solid var(--red);
+      padding-bottom:8px;margin:0 0 22px}
+    h2{font-size:16px;color:var(--navy);margin:26px 0 10px}
+    label{display:block;font-size:13px;font-weight:600;margin:12px 0 4px}
+    input[type=text],input[type=password],textarea,select{
+      width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:6px;
+      font:inherit;font-size:14px}
+    textarea{min-height:120px;font-family:ui-monospace,Consolas,monospace;font-size:13px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
+    .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 18px}
+    .btn{display:inline-block;background:var(--red);color:#fff;border:0;
+      padding:11px 22px;border-radius:6px;font:inherit;font-weight:700;
+      cursor:pointer;text-decoration:none;font-size:14px}
+    .btn:hover{background:#a50d25}
+    .btn.secondary{background:#fff;color:var(--dark);border:1px solid var(--line)}
+    .card{border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+      margin:12px 0;background:#fff}
+    .product-card{display:flex;gap:12px;align-items:flex-start}
+    .product-card .body{flex:1}
+    .muted{color:var(--grey);font-size:13px}
+    .pill{display:inline-block;background:var(--zebra);border:1px solid var(--line);
+      border-radius:999px;padding:2px 10px;font-size:12px;margin:2px 4px 2px 0}
+    .ratings{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .ratings label{display:inline-flex;align-items:center;gap:6px;font-weight:500;
+      background:var(--zebra);border:1px solid var(--line);border-radius:6px;
+      padding:5px 9px;margin:0;cursor:pointer}
+    .ratings input{margin:0}
+    table{border-collapse:collapse;width:100%;margin:10px 0;font-size:13px}
+    th{background:#2E2E2E;color:#fff;text-align:left;padding:8px 10px;font-weight:600}
+    td{border-bottom:1px solid var(--line);padding:7px 10px}
+    tr:nth-child(even) td{background:var(--zebra)}
+    .flash{padding:10px 14px;border-radius:6px;margin:8px 0;font-size:14px}
+    .flash.error{background:#fde8eb;border:1px solid var(--red);color:#7a0a1c}
+    .flash.warn{background:#fff7e6;border:1px solid #d9a300;color:#7a5a00}
+    .flash.ok{background:#e9f7ef;border:1px solid #2e7d4f;color:#1d5435}
+    .red{color:var(--red);font-weight:700}
+    .row-actions{display:flex;gap:8px;align-items:center}
+    fieldset{border:1px solid var(--line);border-radius:8px;margin:14px 0;padding:12px 16px}
+    legend{font-weight:700;color:var(--navy);padding:0 6px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">ELSEWEDY <span>BUSWAY</span> · Offer Generator</div>
+    <nav>
+      <a href="{{ url_for('index') }}">Generate</a>
+      {% if session.get('is_admin') %}
+        <a href="{{ url_for('admin_index') }}">Admin</a>
+        <a href="{{ url_for('admin_logout') }}">Log out</a>
+      {% else %}
+        <a href="{{ url_for('admin_login') }}">Admin</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for cat, msg in messages %}
+        <div class="flash {{ cat }}">{{ msg }}</div>
+      {% endfor %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Generate Offer · Busway{% endblock %}
+{% block content %}
+<h1>Generate Offer</h1>
+
+<form method="post" action="{{ url_for('generate') }}">
+
+  <h2>Project details</h2>
+  <div class="grid">
+    <div>
+      <label>Project name</label>
+      <input type="text" name="project_name" placeholder="e.g. New Cairo Data Centre">
+    </div>
+    <div>
+      <label>Client name</label>
+      <input type="text" name="client_name" placeholder="e.g. ACME Contracting">
+    </div>
+    <div>
+      <label>Reference / Offer no.</label>
+      <input type="text" name="reference" placeholder="e.g. EBW-2026-001">
+    </div>
+    <div>
+      <label>Revision</label>
+      <input type="text" name="revision" value="R0">
+    </div>
+    <div>
+      <label>Date</label>
+      <input type="text" name="date" value="{{ today }}">
+    </div>
+    <div>
+      <label>Validity</label>
+      <input type="text" name="validity"
+             value="{{ defaults.get('validity', '') }}"
+             placeholder="e.g. 30 days">
+    </div>
+    <div>
+      <label>Warranty (months)</label>
+      <input type="text" name="warranty_months"
+             value="{{ defaults.get('warranty_months', '') }}"
+             placeholder="e.g. 18">
+    </div>
+    <div>
+      <label>LME baseline (USD/ton)</label>
+      <input type="text" name="lme_baseline" placeholder="e.g. 9500">
+    </div>
+  </div>
+
+  <h2>Products</h2>
+  <p class="muted">Tick the products to include, then choose ratings and
+    Local/Export for each. A single product produces a clean single-product
+    offer; several products repeat the section per product.</p>
+
+  {% if not products %}
+    <div class="flash warn">No active products in the library.
+      An admin can add products in the <a href="{{ url_for('admin_index') }}">Admin</a> area.</div>
+  {% endif %}
+
+  {% for p in products %}
+    <div class="card product-card">
+      <div class="body">
+        <label style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;margin:0">
+          <input type="checkbox" name="product" value="{{ p.id }}" style="width:auto">
+          {{ p.name }}
+        </label>
+        {% if p.subtitle %}<div class="muted">{{ p.subtitle }}</div>{% endif %}
+        <div style="margin-top:6px">
+          <span class="pill">{{ p.shape|capitalize }}</span>
+          {% if p.conductor %}<span class="pill">{{ p.conductor }}</span>{% endif %}
+        </div>
+
+        <label style="margin-top:12px">Local / Export</label>
+        <select name="localexport__{{ p.id }}" style="max-width:220px">
+          <option value="Export">Export</option>
+          <option value="Local">Local</option>
+        </select>
+
+        <label style="margin-top:12px">Ratings</label>
+        {% if p.ratings %}
+          <div class="ratings">
+            {% for r in p.ratings %}
+              <label>
+                <input type="checkbox" name="ratings__{{ p.id }}" value="{{ r.key }}">
+                {{ r.label }}
+              </label>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="muted">No ratings defined yet for this product.</div>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+
+  <h2>Bill of Quantities <span class="muted">(optional)</span></h2>
+  <p class="muted">Paste straight from Excel (tab-separated). Headers are matched
+    by name, so column order doesn't matter. Required columns: Description,
+    Qty, Unit Price, Total Price.</p>
+  <textarea name="boq" placeholder="Item&#9;Description&#9;QTY&#9;Unit&#9;Unit Price&#9;Total Price&#10;1&#9;800A busway run&#9;10&#9;m&#9;100&#9;1000"></textarea>
+
+  <div style="margin-top:22px">
+    <button class="btn" type="submit">Generate offer (.docx)</button>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}{{ p.name }} · Admin · Busway{% endblock %}
+{% block content %}
+<h1>{% if is_new %}New product{% else %}Edit — {{ p.name }}{% endif %}</h1>
+
+<p><a href="{{ url_for('admin_index') }}">&larr; Back to products</a></p>
+
+<form method="post">
+  <h2>Identity</h2>
+  <div class="grid">
+    <div>
+      <label>Display name</label>
+      <input type="text" name="name" value="{{ p.name }}">
+    </div>
+    <div>
+      <label>Subtitle</label>
+      <input type="text" name="subtitle" value="{{ p.subtitle }}">
+    </div>
+    <div>
+      <label>Conductor material</label>
+      <input type="text" name="conductor_material" value="{{ p.conductor_material }}"
+             placeholder="Copper / Aluminium">
+    </div>
+    <div>
+      <label>Spec-table shape</label>
+      <select name="spec_shape">
+        {% for s in shapes %}
+          <option value="{{ s }}" {% if s == p.spec_shape.value %}selected{% endif %}>
+            {{ s|capitalize }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <label>Summary paragraph</label>
+  <textarea name="summary_paragraph">{{ p.summary_paragraph }}</textarea>
+
+  <h2>Technical Note 1 fields</h2>
+  <p class="muted">These auto-compose Note 1 in the offer. Live preview below.</p>
+  <div class="grid">
+    <div>
+      <label>Product type</label>
+      <input type="text" name="n1_product_type" value="{{ p.note1_fields.product_type }}"
+             placeholder="e.g. Spine Type">
+    </div>
+    <div>
+      <label>Housing</label>
+      <input type="text" name="n1_housing" value="{{ p.note1_fields.housing }}"
+             placeholder="e.g. Aluminium Housing">
+    </div>
+    <div>
+      <label>Rating class</label>
+      <input type="text" name="n1_class" value="{{ p.note1_fields.rating_class }}"
+             placeholder="e.g. Class B">
+    </div>
+    <div>
+      <label>Plating</label>
+      <input type="text" name="n1_plating" value="{{ p.note1_fields.plating }}"
+             placeholder="e.g. Tin Plated on Joint">
+    </div>
+  </div>
+  <div class="flash ok" style="margin-top:10px"><strong>Note 1 preview:</strong> {{ note1_preview }}</div>
+
+  <h2>Product guarantees band</h2>
+  <p class="muted">Labelled constants shown in the Zone-1 guarantees band. Leave a label blank to drop the row.</p>
+  <table>
+    <thead><tr><th>Label</th><th>Value</th></tr></thead>
+    <tbody>
+      {% for g in p.guarantees_band %}
+        <tr>
+          <td><input type="text" name="g_label" value="{{ g.label }}"></td>
+          <td><input type="text" name="g_value" value="{{ g.value }}"></td>
+        </tr>
+      {% endfor %}
+      {% for i in range(4) %}
+        <tr>
+          <td><input type="text" name="g_label" placeholder="new label"></td>
+          <td><input type="text" name="g_value" placeholder="new value"></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-top:20px">
+    <button class="btn" type="submit">Save product</button>
+    {% if not is_new %}
+      <a class="btn secondary" href="{{ url_for('admin_ratings', pid=p.id) }}">Edit ratings &rarr;</a>
+    {% endif %}
+  </div>
+</form>
+
+{% if not is_new %}
+  <h2>Images</h2>
+  <div class="grid">
+    <div class="card">
+      <strong>Diagram</strong>
+      <div class="muted">{{ p.diagram_image or 'No diagram — a placeholder will be shown.' }}</div>
+      {% if p.diagram_image %}
+        <img src="{{ url_for('media', name=p.diagram_image) }}" style="max-width:100%;margin-top:8px;border:1px solid var(--line);border-radius:6px">
+      {% endif %}
+      <form method="post" action="{{ url_for('admin_image', pid=p.id) }}" enctype="multipart/form-data" style="margin-top:10px">
+        <input type="hidden" name="kind" value="diagram">
+        <input type="file" name="image" accept="image/*">
+        <button class="btn secondary" type="submit">Upload diagram</button>
+      </form>
+    </div>
+    <div class="card">
+      <strong>Certificates ({{ p.cert_images|length }})</strong>
+      {% for c in p.cert_images %}
+        <div class="muted">{{ c }}</div>
+      {% endfor %}
+      <form method="post" action="{{ url_for('admin_image', pid=p.id) }}" enctype="multipart/form-data" style="margin-top:10px">
+        <input type="hidden" name="kind" value="cert">
+        <input type="file" name="image" accept="image/*">
+        <button class="btn secondary" type="submit">Add certificate</button>
+      </form>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}

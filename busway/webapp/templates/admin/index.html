@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Admin · Busway{% endblock %}
+{% block content %}
+<h1>Admin — Products</h1>
+
+<p>
+  <a class="btn secondary" href="{{ url_for('admin_text') }}">Standard text &amp; defaults</a>
+</p>
+
+{% if problems %}
+  <div class="flash warn">
+    <strong>Library validation:</strong>
+    <ul style="margin:6px 0 0 18px">
+      {% for pr in problems %}<li>{{ pr }}</li>{% endfor %}
+    </ul>
+  </div>
+{% else %}
+  <div class="flash ok">Library is valid — every rating fills its template columns.</div>
+{% endif %}
+
+<table>
+  <thead>
+    <tr><th>Product</th><th>Shape</th><th>Conductor</th><th>Ratings</th><th>Status</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    {% for p in products %}
+      <tr>
+        <td>
+          <strong>{{ p.name }}</strong>
+          {% if p.subtitle %}<div class="muted">{{ p.subtitle }}</div>{% endif %}
+        </td>
+        <td>{{ p.spec_shape.value|capitalize }}</td>
+        <td>{{ p.conductor_material or '—' }}</td>
+        <td>{{ p.ratings|length }}</td>
+        <td>
+          {% if p.retired %}<span class="pill">Retired</span>
+          {% else %}<span class="red">Active</span>{% endif %}
+        </td>
+        <td>
+          <div class="row-actions">
+            <a class="btn secondary" href="{{ url_for('admin_product', pid=p.id) }}">Edit</a>
+            <a class="btn secondary" href="{{ url_for('admin_ratings', pid=p.id) }}">Ratings</a>
+            {% if not p.retired %}
+              <form method="post" action="{{ url_for('admin_retire', pid=p.id) }}"
+                    onsubmit="return confirm('Retire {{ p.name }}?')">
+                <button class="btn secondary" type="submit">Retire</button>
+              </form>
+            {% endif %}
+          </div>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Add a new product</h2>
+<form method="get" action="" onsubmit="this.action='/admin/product/'+encodeURIComponent(this.pid.value);return this.pid.value.trim()!=''">
+  <div class="row-actions">
+    <input type="text" name="pid" placeholder="product id, e.g. spine" style="max-width:280px">
+    <button class="btn" type="submit">Create / edit</button>
+  </div>
+  <p class="muted">The id is the stable key (lowercase, no spaces). You'll set the display name next.</p>
+</form>
+{% endblock %}

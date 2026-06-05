@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Ratings — {{ p.name }} · Admin · Busway{% endblock %}
+{% block content %}
+<h1>Ratings — {{ p.name }}</h1>
+
+<p><a href="{{ url_for('admin_product', pid=p.id) }}">&larr; Back to {{ p.name }}</a></p>
+
+{% if problems %}
+  <div class="flash warn">
+    <ul style="margin:6px 0 0 18px">
+      {% for pr in problems %}<li>{{ pr }}</li>{% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+{% if p.spec_shape.value == 'track' %}
+  <div class="flash warn">PowerTrack uses a bespoke layout; its ratings are
+    managed via track data, not the flat column editor.</div>
+{% else %}
+
+<h2>Existing ratings</h2>
+{% if p.ratings %}
+<table>
+  <thead>
+    <tr>
+      <th>Rated current</th>
+      <th>Variant</th>
+      {% for c in cols %}<th>{{ c.label }}{% if c.unit %} ({{ c.unit }}){% endif %}</th>{% endfor %}
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in p.sorted_ratings() %}
+      <tr>
+        <td class="red">{{ r.label() }}</td>
+        <td>{{ r.variant or '—' }}</td>
+        {% for c in cols %}<td>{{ r.values.get(c.key, '') or '—' }}</td>{% endfor %}
+        <td>
+          <form method="post" onsubmit="return confirm('Remove {{ r.label() }}?')">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="idx" value="{{ loop.index0 }}">
+            <button class="btn secondary" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+  <p class="muted">No ratings yet.</p>
+{% endif %}
+
+<h2>Add a rating</h2>
+<form method="post">
+  <input type="hidden" name="action" value="add">
+  <div class="grid-3">
+    <div>
+      <label>Rated current (A)</label>
+      <input type="text" name="in_amps" placeholder="e.g. 800">
+    </div>
+    <div>
+      <label>Variant <span class="muted">(optional)</span></label>
+      <input type="text" name="variant" placeholder="e.g. Cu">
+    </div>
+  </div>
+  <h2>Column values</h2>
+  <div class="grid-3">
+    {% for c in cols %}
+      <div>
+        <label>{{ c.label }}{% if c.unit %} ({{ c.unit }}){% endif %}</label>
+        <input type="text" name="v_{{ c.key }}">
+      </div>
+    {% endfor %}
+  </div>
+  <div style="margin-top:18px">
+    <button class="btn" type="submit">Add rating</button>
+  </div>
+</form>
+{% endif %}
+{% endblock %}

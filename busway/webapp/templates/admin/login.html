@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Admin login · Busway{% endblock %}
+{% block content %}
+<h1>Admin login</h1>
+<form method="post" style="max-width:360px">
+  <label>Password</label>
+  <input type="password" name="password" autofocus>
+  <div style="margin-top:18px">
+    <button class="btn" type="submit">Log in</button>
+    <a class="btn secondary" href="{{ url_for('index') }}">Cancel</a>
+  </div>
+</form>
+{% endblock %}
