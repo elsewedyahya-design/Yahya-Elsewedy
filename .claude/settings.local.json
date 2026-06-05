@@ -83,7 +83,10 @@
       "Skill(schedule:*)",
       "Bash(python -c \"import docx, lxml, openpyxl; print\\('OK: docx', docx.__version__, '| lxml | openpyxl', openpyxl.__version__\\)\")",
       "Bash(python scripts/office/unpack.py FULL_OFFER_final.docx unpacked_authoritative/)",
-      "Bash(python scripts/office/pack.py unpacked_authoritative/ ._rt_check.docx --original FULL_OFFER_final.docx)"
+      "Bash(python scripts/office/pack.py unpacked_authoritative/ ._rt_check.docx --original FULL_OFFER_final.docx)",
+      "Bash(python scripts/seed_library.py)",
+      "Bash(python -m pip install pytest --quiet)",
+      "Bash(python -m pytest tests/ -q)"
     ]
   }
 }

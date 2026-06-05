@@ -1,0 +1,5 @@
+python-docx>=1.2.0
+lxml>=5.0
+openpyxl>=3.1
+Flask>=3.0
+pytest>=8.0

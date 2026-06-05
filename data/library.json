@@ -1,0 +1,679 @@
+{
+  "products": [
+    {
+      "id": "spine",
+      "name": "SPINE",
+      "subtitle": "Aluminium Bi-Metal Conductor — Sandwich Busway",
+      "conductor_material": "Aluminium",
+      "summary_paragraph": "",
+      "spec_shape": "sandwich",
+      "guarantees_band": [
+        {
+          "label": "Standard",
+          "value": "IEC 61439-1 & 6"
+        },
+        {
+          "label": "Protection",
+          "value": "IP55 / IP65"
+        },
+        {
+          "label": "Frequency",
+          "value": "50 / 60 Hz"
+        },
+        {
+          "label": "Temperature",
+          "value": "-5 / +55 °C"
+        },
+        {
+          "label": "Rated insulation voltage (Ui)",
+          "value": "1000 V"
+        },
+        {
+          "label": "Rated operational voltage (Ue)",
+          "value": "1000 V"
+        },
+        {
+          "label": "Impact protection",
+          "value": "IK10"
+        },
+        {
+          "label": "Plating",
+          "value": "Tin / Silver"
+        },
+        {
+          "label": "Insulation",
+          "value": "Epoxy / Mylar"
+        }
+      ],
+      "note1_fields": {
+        "product_type": "Spine Type",
+        "housing": "Aluminium Housing",
+        "rating_class": "Class B",
+        "plating": "Tin Plated on Joint"
+      },
+      "diagram_image": "",
+      "cert_images": [],
+      "terms_overrides": {},
+      "ratings": [
+        {
+          "in_amps": 800,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 1000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 1250,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 1600,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 2000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 2500,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 3200,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 4000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 5000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 6300,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        }
+      ],
+      "track_data": {},
+      "retired": false
+    },
+    {
+      "id": "powerlink",
+      "name": "PowerLink",
+      "subtitle": "Pure Copper Conductor — Sandwich Busway",
+      "conductor_material": "Copper",
+      "summary_paragraph": "",
+      "spec_shape": "sandwich",
+      "guarantees_band": [
+        {
+          "label": "Standard",
+          "value": "IEC 61439-1 & 6"
+        },
+        {
+          "label": "Protection",
+          "value": "IP55 / IP65"
+        },
+        {
+          "label": "Frequency",
+          "value": "50 / 60 Hz"
+        },
+        {
+          "label": "Temperature",
+          "value": "-5 / +55 °C"
+        },
+        {
+          "label": "Rated insulation voltage (Ui)",
+          "value": "1000 V"
+        },
+        {
+          "label": "Rated operational voltage (Ue)",
+          "value": "1000 V"
+        },
+        {
+          "label": "Impact protection",
+          "value": "IK10"
+        }
+      ],
+      "note1_fields": {
+        "product_type": "PowerLink Type",
+        "housing": "Aluminium Housing",
+        "rating_class": "Class B",
+        "plating": "Tin Plated on Joint"
+      },
+      "diagram_image": "",
+      "cert_images": [],
+      "terms_overrides": {},
+      "ratings": [
+        {
+          "in_amps": 800,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 1000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 1250,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 1600,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 2000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 2500,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 3200,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 3500,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 4000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 6000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 6300,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 5000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": "A"
+        },
+        {
+          "in_amps": 5000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vdrop": "",
+            "w": "",
+            "h": "",
+            "weight": ""
+          },
+          "variant": "B"
+        }
+      ],
+      "track_data": {},
+      "retired": false
+    },
+    {
+      "id": "powercast",
+      "name": "PowerCast",
+      "subtitle": "Pure Copper Conductor — Cast Resin Busway",
+      "conductor_material": "Copper",
+      "summary_paragraph": "",
+      "spec_shape": "cast",
+      "guarantees_band": [
+        {
+          "label": "Standard",
+          "value": "IEC 439-2"
+        },
+        {
+          "label": "Protection",
+          "value": "IP68"
+        },
+        {
+          "label": "Frequency",
+          "value": "50 / 60 Hz"
+        },
+        {
+          "label": "Temperature",
+          "value": "-50 / +40 °C"
+        },
+        {
+          "label": "Rated insulation voltage (Ui)",
+          "value": "690 / 1000 V"
+        },
+        {
+          "label": "Rated operational voltage (Ue)",
+          "value": "400 – 690 V"
+        },
+        {
+          "label": "Tank colour",
+          "value": "Light grey / yellow"
+        },
+        {
+          "label": "Installation",
+          "value": "Horizontal hoisting / vertical installation"
+        }
+      ],
+      "note1_fields": {
+        "product_type": "PowerCast Type",
+        "housing": "Cast Resin Housing",
+        "rating_class": "Class B",
+        "plating": "Tin Plated on Joint"
+      },
+      "diagram_image": "",
+      "cert_images": [],
+      "terms_overrides": {},
+      "ratings": [
+        {
+          "in_amps": 400,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 630,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 800,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 1000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 1250,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 1600,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 2000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 2500,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 3200,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 4000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 5000,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        },
+        {
+          "in_amps": 6300,
+          "values": {
+            "icw": "",
+            "ipk": "",
+            "r": "",
+            "vd_pf06": "",
+            "vd_pf07": "",
+            "vd_pf08": "",
+            "vd_pf09": "",
+            "vd_pf10": ""
+          },
+          "variant": ""
+        }
+      ],
+      "track_data": {},
+      "retired": false
+    },
+    {
+      "id": "powertrack",
+      "name": "PowerTrack",
+      "subtitle": "Pure Copper Conductor — Track Busway (Data Centre)",
+      "conductor_material": "Copper",
+      "summary_paragraph": "",
+      "spec_shape": "track",
+      "guarantees_band": [
+        {
+          "label": "Standard",
+          "value": "IEC 61439-1 & 6"
+        },
+        {
+          "label": "Conductor",
+          "value": "Pure Copper"
+        }
+      ],
+      "note1_fields": {
+        "product_type": "PowerTrack Type",
+        "housing": "Track Housing",
+        "rating_class": "Class A",
+        "plating": "Tin Plated on Joint"
+      },
+      "diagram_image": "",
+      "cert_images": [],
+      "terms_overrides": {},
+      "ratings": [],
+      "track_data": {
+        "ac_classes": [],
+        "dc_classes": [],
+        "tap_off": {
+          "height": "",
+          "width": "",
+          "length": "",
+          "intelligent_module_options": [],
+          "output_channels": "",
+          "output_form": "",
+          "installation_form": ""
+        },
+        "note": "PowerTrack table layout pending design (blueprint §11)."
+      },
+      "retired": false
+    }
+  ]
+}

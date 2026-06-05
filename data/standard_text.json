@@ -1,0 +1,19 @@
+{
+  "defaults": {
+    "validity": "5 working days",
+    "warranty_months": "12"
+  },
+  "technical_notes_fixed": [
+    "The above Bill of Quantities is based on the documents received at the time of quotation.",
+    "The final Bill of Quantities will be issued according to the approved shop drawings.",
+    "Accessories lengths are calculated based on standard lengths.",
+    "Adaptation boxes for transformers/generators are excluded unless otherwise stated.",
+    "All submitted ratings are normal ratings for indoor installation.",
+    "The following are excluded: fire barriers, civil works, seismic supports, spare parts, training, and monitoring systems.",
+    "For PowerTrack and PowerCast, joints are provided per 3-metre standard length."
+  ],
+  "terms": {
+    "warranty": "The equipment is guaranteed for {{WARRANTY_MONTHS}} months from date of delivery against manufacturing defects.",
+    "factory_test": "Routine factory tests are carried out in accordance with the relevant IEC standards."
+  }
+}
