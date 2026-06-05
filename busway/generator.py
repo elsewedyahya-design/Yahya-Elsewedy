@@ -101,6 +101,23 @@ def _replace_giant_table(document_xml: str, spec_xml: str) -> str:
     return document_xml[:start] + spec_xml + document_xml[end + len("</w:tbl>"):]
 
 
+def _insert_after_heading(document_xml: str, heading_text: str, fragment: str) -> str:
+    """Insert `fragment` right after the paragraph that contains `heading_text`.
+
+    Used to fill the master's empty "Price Breakdown" section with the
+    consolidated price table without touching any surrounding prose. If the
+    heading is not found the document is returned unchanged.
+    """
+    i = document_xml.find(heading_text)
+    if i == -1:
+        return document_xml
+    close = document_xml.find("</w:p>", i)
+    if close == -1:
+        return document_xml
+    cut = close + len("</w:p>")
+    return document_xml[:cut] + fragment + document_xml[cut:]
+
+
 # --- price breakdown (Task 7 render side) ----------------------------------
 def generate_price_table(boq_rows: list[dict]) -> str:
     """Consolidated price table grouped by product, with a grand total.
@@ -194,6 +211,19 @@ def generate_offer(inp: OfferInput, out_path: str | Path, *,
         # Replace the giant Technical Specification table with the two-zone design.
         spec_xml = generate_spec_section(products_ratings)
         xml = _replace_giant_table(xml, spec_xml)
+
+        # Fill the master's (empty) Price Breakdown section with the consolidated
+        # price table built from the pasted BOQ. Bounded, non-duplicating: it
+        # slots in directly after the existing "Price Breakdown" heading.
+        if inp.boq_rows:
+            xml = _insert_after_heading(
+                xml, "Price Breakdown", generate_price_table(inp.boq_rows))
+
+        # Align the LME escalation baseline in the Conditions of Sale to this
+        # quote's figure (the master ships with a "9000 USD per Ton" exemplar).
+        if inp.lme_baseline:
+            xml = xml.replace("9000 USD per Ton",
+                              f"{inp.lme_baseline} USD per Ton")
 
         doc_path.write_text(xml, encoding="utf-8")
 

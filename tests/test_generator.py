@@ -75,3 +75,29 @@ def test_generate_offer_produces_valid_docx(tmp_path):
         assert "{{" not in doc
         # exactly the generated spec tables remain (cover/contact untouched)
         assert "TEST TOWER" in doc
+
+
+def test_generate_offer_injects_price_table_and_lme(tmp_path):
+    """A pasted BOQ fills the Price Breakdown section; the LME baseline in the
+    Conditions of Sale is aligned to this quote's figure."""
+    out = tmp_path / "offer.docx"
+    boq_rows = [
+        {"item": "1", "description": "800A busway run", "qty": "10",
+         "unit": "m", "unit_price": "100", "total_price": "1000"},
+    ]
+    inp = OfferInput(
+        project_name="DC ALPHA", reference="EE-T-2",
+        lme_baseline="9500",
+        selections=[ProductSelection("spine", "Export", ratings=[(800, "")])],
+        boq_rows=boq_rows,
+    )
+    generate_offer(inp, out)
+    with zipfile.ZipFile(out) as zf:
+        assert zf.testzip() is None
+        doc = zf.read("word/document.xml").decode("utf-8")
+    # price table landed and totalled
+    assert "GRAND TOTAL" in doc
+    assert "800A busway run" in doc
+    # LME baseline aligned, exemplar figure gone
+    assert "9500 USD per Ton" in doc
+    assert "9000 USD per Ton" not in doc
