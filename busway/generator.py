@@ -89,6 +89,11 @@ def generate_spec_section(products_ratings: list[tuple[Product, list[Rating]]]) 
                 [(g.label, g.value) for g in p.guarantees_band]))
         blocks.append(ooxml.sub_label("Selected Ratings"))
         blocks.append(_spec_table_for_product(p, ratings))
+        # Diagram slot: a dashed placeholder until an image is uploaded
+        # (image embedding requires package-rels plumbing — see TODO below).
+        if not p.diagram_image:
+            blocks.append(ooxml.placeholder_box(
+                f"{p.name} cross-section diagram — to be added"))
     return "".join(blocks)
 
 

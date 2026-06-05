@@ -166,6 +166,33 @@ def table(headers: list[str], rows: list[list[str]], *,
             % (grid, tblpr, head_row, "".join(body_rows)))
 
 
+def placeholder_box(text: str) -> str:
+    """A dashed-border, grey, centred placeholder box (blueprint §Phase 7).
+
+    Used where a product diagram or certificate image will go but none has
+    been uploaded yet — so the layout clearly shows the slot rather than
+    silently collapsing.
+    """
+    borders = (
+        '<w:tblBorders>'
+        '<w:top w:val="dashed" w:sz="6" w:space="0" w:color="%s"/>'
+        '<w:left w:val="dashed" w:sz="6" w:space="0" w:color="%s"/>'
+        '<w:bottom w:val="dashed" w:sz="6" w:space="0" w:color="%s"/>'
+        '<w:right w:val="dashed" w:sz="6" w:space="0" w:color="%s"/>'
+        '</w:tblBorders>' % (HAIRLINE, HAIRLINE, HAIRLINE, HAIRLINE))
+    tblpr = ('<w:tblPr><w:tblW w:w="%d" w:type="dxa"/><w:tblLayout w:type="fixed"/>'
+             '%s<w:tblCellMar><w:top w:w="240" w:type="dxa"/>'
+             '<w:left w:w="100" w:type="dxa"/><w:bottom w:w="240" w:type="dxa"/>'
+             '<w:right w:w="100" w:type="dxa"/></w:tblCellMar></w:tblPr>'
+             % (CONTENT_WIDTH_DXA, borders))
+    grid = '<w:gridCol w:w="%d"/>' % CONTENT_WIDTH_DXA
+    content = para(run(text, italic=True, color=GREY, size_pt=10),
+                   space_after=0, align="center")
+    cell = _cell(content, width=CONTENT_WIDTH_DXA)
+    return ("<w:tbl><w:tblGrid>%s</w:tblGrid>%s<w:tr>%s</w:tr></w:tbl>"
+            % (grid, tblpr, cell))
+
+
 def guarantee_band(items: list[tuple[str, str]]) -> str:
     """Zone-1 Product Guarantees: family-wide constants as red mini-labels +
     values, laid out as a clean 3-column borderless grid (airy, minimal)."""
